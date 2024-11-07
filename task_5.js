@@ -18,7 +18,7 @@ console.log("\n");
 // Напишіть функцію createArrayFromNumber, яка приймає число n і повертає масив чисел від 1 до n включно. Використайте Array.from().
 
 function createArrayFromNumber(n) {
-  // ваш код тут
+  return Array.from({ length: n }, (_, i) => i + 1);
 }
 
 console.log(createArrayFromNumber(5)); // [1, 2, 3, 4, 5]
@@ -29,55 +29,72 @@ console.log("\n");
 // Задача 3 (середня)
 
 // Створіть функцію createSquaresArray, яка приймає число n і повертає масив квадратів чисел від 1 до n. Використайте Array.from() і функцію-генератор.
+function* squareGenerator(n) {
+  for (let i = 1; i <= n; i++) {
+    yield i * i;
+  }
+}
 
-// function createSquaresArray(n) {
-//   // ваш код тут
-// }
+function createSquaresArray(n) {
+  return Array.from(squareGenerator(n));
+}
 
-// console.log(createSquaresArray(5)); // [1, 4, 9, 16, 25]
-// console.log(createSquaresArray(3)); // [1, 4, 9]
+console.log(createSquaresArray(5)); // [1, 4, 9, 16, 25]
+console.log(createSquaresArray(3)); // [1, 4, 9]
+
+console.log("\n");
 
 // Задача 4 (середня)
 
 // Напишіть функцію createArrayFromRange, яка приймає два числа start і end і повертає масив чисел від start до end включно. Використайте Array.from().
 
-// function createArrayFromRange(start, end) {
-//   // ваш код тут
-// }
+function createArrayFromRange(start, end) {
+  return Array.from({ length: end - start + 1 }, (_, i) => i + start);
+}
 
-// console.log(createArrayFromRange(3, 7)); // [3, 4, 5, 6, 7]
-// console.log(createArrayFromRange(1, 5)); // [1, 2, 3, 4, 5]
+console.log(createArrayFromRange(3, 7)); // [3, 4, 5, 6, 7]
+console.log(createArrayFromRange(1, 5)); // [1, 2, 3, 4, 5]
+
+console.log("\n");
 
 // Задача 5 (складна)
 
 // Створіть функцію duplicateElements, яка приймає масив arr і повертає новий масив, де кожен елемент з arr повторюється двічі. Використайте Array.from() для побудови нового масиву.
 
-// function duplicateElements(arr) {
-//   // ваш код тут
-// }
+function duplicateElements(arr) {
+  return Array.from(arr, (item) => [item, item]).flat();
+}
 
-// console.log(duplicateElements([1, 2, 3])); // [1, 1, 2, 2, 3, 3]
-// console.log(duplicateElements(["a", "b", "c"])); // ["a", "a", "b", "b", "c", "c"]
+console.log(duplicateElements([1, 2, 3])); // [1, 1, 2, 2, 3, 3]
+console.log(duplicateElements(["a", "b", "c"])); // ["a", "a", "b", "b", "c", "c"]
+
+console.log("\n");
 
 // Задача 6 (складна)
 
 // Напишіть функцію initializeMatrix, яка приймає два параметри: rows і cols, що визначають кількість рядків і стовпців матриці, і повертає двовимірний масив, заповнений нулями. Використайте Array.from() для створення матриці.
 
-// function initializeMatrix(rows, cols) {
-//   // ваш код тут
-// }
+function initializeMatrix(rows, cols) {
+  return Array.from({ length: rows }, () =>
+    Array.from({ length: cols }, () => 0)
+  );
+}
 
-// console.log(initializeMatrix(2, 3));
-// // [
-// //   [0, 0, 0],
-// //   [0, 0, 0]
-// // ]
+console.log(initializeMatrix(2, 3));
+// [
+//   [0, 0, 0],
+//   [0, 0, 0]
+// ]
 
-// console.log(initializeMatrix(3, 2));
-// // [
-// //   [0, 0],
-// //   [0, 0],
-// //   [0, 0]
-// // ]
+console.log(initializeMatrix(3, 2));
+// [
+//   [0, 0],
+//   [0, 0],
+//   [0, 0]
+// ]
+
+console.log("\n");
+console.log("\n");
+console.log("\n");
 
 // Ці задачі допоможуть вам освоїти метод Array.from() і його застосування для створення різних масивів на основі даних або функцій-генераторів.
